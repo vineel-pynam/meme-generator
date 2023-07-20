@@ -1,0 +1,24 @@
+name: 'Deploy to Netlify'
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Build the website
+        run: |
+          mkdir -p /home/runner/work/_temp/_github_home/build
+          <commands_to_build_the_site_and_store_the_output_in_'/home/runner/work/_temp/_github_home/build'>
+      - name: Deploy Netlify
+        with:
+          AUTH_TOKEN: ${{ mk8bvUyoa_zK-tV5Lz84btm67mVoJe7MlE21z4Udhv8 }}
+          SITE_ID: ${{ 992ca152-2350-4afd-a38b-49ec4a452ff1 }}
+          DEPLOY_PROD: true
